@@ -282,6 +282,11 @@ gh repo view {GITHUB_USER}/{repo-name} 2>/dev/null
 2. 別のリポジトリ名で続行
 3. 既存リポジトリを上書き（force push — ユーザーの明示的な同意が必要）
 
+#### Description 生成
+
+README.md の冒頭から説明文を抽出し、GitHub リポジトリの Description として使用する。
+タイトル行（`# ...`）の直後にある最初の段落テキストを取得し、350文字以内に収める。
+
 #### リポジトリ作成・公開
 
 ```bash
@@ -289,7 +294,7 @@ cd ~/Projects/{repo-name}
 git init
 git add .
 git commit -m "Initial release"
-gh repo create {GITHUB_USER}/{repo-name} --public --source=. --push
+gh repo create {GITHUB_USER}/{repo-name} --public --source=. --push --description "{description}"
 ```
 
 ### Step 8: Obsidian プロジェクト登録（オプション）
